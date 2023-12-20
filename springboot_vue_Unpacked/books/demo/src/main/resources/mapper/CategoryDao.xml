@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.app.dao.CategoryDao">
+    <insert id="insert">
+        insert into category(catename,createtime)values(#{catename},now())
+    </insert>
+    <update id="update">
+        update category set catename=#{catename},modifytime=now() where cateid=#{cateid}
+    </update>
+    <delete id="delete">
+        update category set deleted=1 where cateid=#{cid}
+    </delete>
+
+
+    <select id="listCategory" resultType="com.book.app.bean.Category">
+        select * from category where deleted=0
+    </select>
+</mapper>
